@@ -7,6 +7,8 @@ function Book(title, author, length) {
     this.id = crypto.randomUUID();
 }
 
+Book.prototype.read = false;
+
 function addBook(title, author, length) {
     const book = new Book(title, author, length);
     library.push(book);
@@ -26,6 +28,20 @@ function cellFunction(book, frag) {
     const length = document.createElement('p');
     length.textContent =`amount of pages: ${book.length}`;
     bookCell.appendChild(length);
+
+    const readCheck = document.createElement('label');
+    readCheck.htmlFor = 'check';
+    readCheck.className = 'check';
+    const span = document.createElement('span');
+    span.textContent = 'Have read: ';
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.id = 'check';
+    input.checked = book.read;
+    input.addEventListener('change', () => {book.read = input.checked});
+    readCheck.appendChild(span);
+    readCheck.appendChild(input);
+    bookCell.appendChild(readCheck);
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
