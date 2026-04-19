@@ -18,15 +18,15 @@ function cellFunction(book, frag) {
     const bookCell = document.createElement('div');
 
     const title = document.createElement('p');
-    title.textContent =`title: ${book.title}`;
+    title.textContent =`Title: ${book.title}.`;
     bookCell.appendChild(title);
 
     const author = document.createElement('p');
-    author.textContent =`author: ${book.author}`;
+    author.textContent =`Author: ${book.author}.`;
     bookCell.appendChild(author);
 
     const length = document.createElement('p');
-    length.textContent =`amount of pages: ${book.length}`;
+    length.textContent =`Length: ${book.length} pages.`;
     bookCell.appendChild(length);
 
     const readCheck = document.createElement('label');
@@ -78,6 +78,7 @@ function labelFactory(id, type, labelText) {
     input.type = type;
     input.name = id;
     input.id = id;
+    input.required = true;
 
     label.appendChild(span);
     label.appendChild(input);
@@ -96,7 +97,7 @@ addNewBtn.addEventListener('click', () => {
 
     form.appendChild(labelFactory('title', 'text', 'Title: '))
     form.appendChild(labelFactory('author', 'text', 'Author: '))
-    form.appendChild(labelFactory('pages', 'number', 'Amount of pages: '))
+    form.appendChild(labelFactory('pages', 'number', 'Length: '))
 
     const submit = document.createElement('button');
     submit.type = 'submit';
